@@ -7,6 +7,8 @@ import com.batu.grpc.domain.event.BookCreatedEvent;
 import com.batu.grpc.domain.exception.AuthorDomainException;
 import com.batu.grpc.domain.exception.BookDomainException;
 import com.batu.grpc.domain.valueObject.AuthorId;
+import com.batu.grpc.exception.AuthorApplicationException;
+import com.batu.grpc.exception.BookApplicationException;
 import com.batu.grpc.mapper.book.BookDataMapper;
 import com.batu.grpc.ports.output.repository.AuthorRepository;
 import com.batu.grpc.ports.output.repository.BookRepository;
@@ -39,7 +41,7 @@ public class CreateBookCommandHelper {
         Optional<Author> authorResult = authorRepository.findAuthorByAuthorId(authorId.getValue());
         if(authorResult.isEmpty()){
             log.error("Author with author id= {} not found in the persist store!", authorId.getValue());
-            throw new AuthorDomainException("Author with author id= " + authorId.getValue() + " not found in the persist store!");
+            throw new AuthorApplicationException("Author with author id= " + authorId.getValue() + " not found in the persist store!");
         }
         log.info("Author with author id= {} successfully found in the persist store!", authorResult.get().getId().getValue());
         return authorResult.get();
@@ -49,7 +51,7 @@ public class CreateBookCommandHelper {
         Book bookResult = bookRepository.save(book,author);
         if(bookResult == null){
             log.error("Could not save book!");
-            throw new BookDomainException("Could not save book!");
+            throw new BookApplicationException("Could not save book!");
         }
         log.info("Book saved successfully with id= {} in to persist store!", bookResult.getId().getValue());
     }
@@ -58,7 +60,7 @@ public class CreateBookCommandHelper {
         Author authorResult = authorRepository.save(author);
         if(authorResult == null){
             log.error("Could not update author with author id= {}", author.getId().getValue());
-            throw new AuthorDomainException("Could not update author with author id= " + author.getId().getValue());
+            throw new AuthorApplicationException("Could not update author with author id= " + author.getId().getValue());
         }
         log.info(" \n Author updated successfully with author id= {} \n with books= {}"
                 , authorResult.getId().getValue()

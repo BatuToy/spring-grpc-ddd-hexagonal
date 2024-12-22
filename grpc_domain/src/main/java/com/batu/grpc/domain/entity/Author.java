@@ -1,11 +1,11 @@
 package com.batu.grpc.domain.entity;
 
-import com.batu.common.domain.entity.BaseEntity;
-import com.batu.common.domain.valueobject.Money;
+import com.batu.domain.entity.BaseEntity;
+import com.batu.domain.valueobject.Money;
 import com.batu.grpc.domain.exception.AuthorDomainException;
 import com.batu.grpc.domain.exception.BookDomainException;
 import com.batu.grpc.domain.valueObject.AuthorId;
-import com.batu.common.domain.valueobject.Gender;
+import com.batu.domain.valueobject.Gender;
 import com.batu.grpc.domain.valueObject.TrackingId;
 
 import java.util.ArrayList;
@@ -43,11 +43,12 @@ public class Author extends BaseEntity<AuthorId> {
         validateId();
         validateSalary();
     }
+
     // Todo: Waste of cache need a solution!
     public void initializeBookToAuthor(Book book) {
-        List<Book> booksMutable = new ArrayList<>();
-        booksMutable.add(book);
-        this.books = List.copyOf(booksMutable);
+        List<Book> mutableBooks = new ArrayList<>();
+        mutableBooks.add(book);
+        this.books = List.copyOf(mutableBooks);
     }
 
     private void initializeAddress(){

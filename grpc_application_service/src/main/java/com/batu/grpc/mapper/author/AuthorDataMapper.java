@@ -1,6 +1,6 @@
 package com.batu.grpc.mapper.author;
 
-import com.batu.common.domain.valueobject.Money;
+import com.batu.domain.valueobject.Money;
 import com.batu.grpc.domain.entity.Address;
 import com.batu.grpc.domain.entity.Author;
 import com.batu.grpc.domain.entity.Book;
@@ -29,6 +29,7 @@ public class AuthorDataMapper {
 
     public CreateAuthorResponse authorToCreateAuthorResponse(Author author, String message){
         return CreateAuthorResponse.builder()
+                .authorId(author.getId().getValue())
                 .authorTrackingId(author.getTrackingId().getValue())
                 .addressId(author.getAddress().getId().getValue())
                 .contactId(author.getContact().getId().getValue())
@@ -47,6 +48,7 @@ public class AuthorDataMapper {
 
     private Address addressDtoToAddress(com.batu.grpc.dto.author.create.Address address){
         return new Address(
+                address.getCountry(),
                 address.getCity(),
                 address.getStreetName(),
                 address.getPostalCode()
@@ -63,7 +65,7 @@ public class AuthorDataMapper {
     private List<Book> setBooksDtoToBook(List<com.batu.grpc.dto.book.create.Book> books){
         return books.stream().map(
                 book -> Book.builder()
-                        .price(new Money(book.getPrice().getAmount()))
+                        //.price(new Money(book.getPrice().getAmount()))
                         .pageSize(book.getPageSize())
                         .bookStatus(book.getBookStatus())
                         .title(book.getTitle())

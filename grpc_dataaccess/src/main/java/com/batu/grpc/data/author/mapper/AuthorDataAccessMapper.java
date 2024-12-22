@@ -1,6 +1,6 @@
 package com.batu.grpc.data.author.mapper;
 
-import com.batu.common.domain.valueobject.Money;
+import com.batu.domain.valueobject.Money;
 import com.batu.grpc.data.author.entity.AddressEntity;
 import com.batu.grpc.data.author.entity.AuthorEntity;
 import com.batu.grpc.data.author.entity.ContactEntity;
@@ -54,6 +54,7 @@ public class AuthorDataAccessMapper {
         // AuthorId or Author will be set from the AuthorEntity!
         return AddressEntity.builder()
                 .id(address.getId().getValue())
+                .country(address.getCountry())
                 .city(address.getCity())
                 .street(address.getStreetName())
                 .postalCode(address.getPostalCode())
@@ -97,6 +98,7 @@ public class AuthorDataAccessMapper {
     public Address addressEntityToAddress(AddressEntity addressEntity){
         return new Address(
             new AddressId(addressEntity.getId()),
+                addressEntity.getCountry(),
                 addressEntity.getCity(),
                 addressEntity.getStreet(),
                 addressEntity.getPostalCode()

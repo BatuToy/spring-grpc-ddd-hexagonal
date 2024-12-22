@@ -11,6 +11,9 @@ import com.batu.grpc.domain.exception.AuthorDomainException;
 import com.batu.grpc.domain.exception.BookDomainException;
 import com.batu.grpc.domain.exception.ContactDomainException;
 import com.batu.grpc.dto.author.create.CreateAuthorCommand;
+import com.batu.grpc.exception.AddressApplicationException;
+import com.batu.grpc.exception.AuthorApplicationException;
+import com.batu.grpc.exception.ContactApplicationException;
 import com.batu.grpc.mapper.author.AuthorDataMapper;
 import com.batu.grpc.ports.output.repository.AddressRepository;
 import com.batu.grpc.ports.output.repository.AuthorRepository;
@@ -30,7 +33,6 @@ public class CreateAuthorCommandHelper {
 
     private final AuthorDataMapper authorDataMapper;
     private final AuthorRepository authorRepository;
-    private final BookRepository bookRepository;
     private final ContactRepository contactRepository;
     private final AddressRepository addressRepository;
     private final AuthorDomainService authorDomainService;
@@ -39,11 +41,10 @@ public class CreateAuthorCommandHelper {
     public AuthorCreatedEvent persisAuthor(CreateAuthorCommand createAuthorCommand){
         Author author = authorDataMapper.createAuthorCommandToAuthor(createAuthorCommand);
         AuthorCreatedEvent authorCreatedEvent = authorDomainService.validateAndInitializeAuthor(author);
-        log.info(" \n AuthorId= \n {} BookIds= {} \n AddressId= {} \n ContactId= {}",
+        log.info(" \n AuthorId= \n {} \n AddressId= {} \n ContactId= {}",
                 authorCreatedEvent.getAuthor().getId().getValue(),
                 authorCreatedEvent.getAuthor().getAddress().getId().getValue(),
                 authorCreatedEvent.getAuthor().getContact().getId().getValue());
-        // Must save the relational entities before saving the author but this cause Transactional issues!
         saveAddress(authorCreatedEvent.getAuthor().getAddress());
         saveContact(authorCreatedEvent.getAuthor().getContact());
         saveAuthor(author);
@@ -54,7 +55,7 @@ public class CreateAuthorCommandHelper {
         Contact contactResult = contactRepository.save(contact);
         if(contactResult == null){
             log.error("Could not save contact!");
-            throw new ContactDomainException("Could not save contact!");
+            throw new ContactApplicationException("Could not save contact!");
         }
         log.info("Contact with id= {} saved successfully!", contact.getId().getValue());
     }
@@ -63,7 +64,7 @@ public class CreateAuthorCommandHelper {
         Address addressResult = addressRepository.save(address);
         if (addressResult == null){
             log.error("Could not save address!");
-            throw new AddressDomainException("Could not save address");
+            throw new AddressApplicationException("Could not save address");
         }
         log.info("Address with id= {} saved successfully!", addressResult.getId().getValue());
     }
@@ -73,22 +74,22 @@ public class CreateAuthorCommandHelper {
         Author authorResult = authorRepository.save(author);
         if(authorResult == null){
             log.error("Could not save author!");
-            throw new AuthorDomainException("Could not save the author!");
+            throw new AuthorApplicationException("Could not save the author!");
         }
         log.info("Author with id= {} saved successfully!", authorResult.getId().getValue());
     }
 
-    private void saveAllBooks(List<Book> books, Author author){
-        books.forEach(
-                book -> {
-                    Book bookResult = bookRepository.save(book, author);
-                    if(bookResult == null){
-                        log.error("Could not save book!");
-                        throw new BookDomainException("Could not save book!");
-                    }
-                    log.info("Book with id= {} saved successfully!", bookResult.getId().getValue());
-                }
-        );
-    }
+//    private void saveAllBooks(List<Book> books, Author author){
+//        books.forEach(
+//                book -> {
+//                    Book bookResult = bookRepository.save(book, author);
+//                    if(bookResult == null){
+//                        log.error("Could not save book!");
+//                        throw new BookDomainException("Could not save book!");
+//                    }
+//                    log.info("Book with id= {} saved successfully!", bookResult.getId().getValue());
+//                }
+//        );
+//    }
 
 }

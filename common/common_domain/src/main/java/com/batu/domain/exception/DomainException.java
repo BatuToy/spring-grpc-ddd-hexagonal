@@ -1,4 +1,4 @@
-package com.batu.common.domain.exception;
+package com.batu.domain.exception;
 
 public abstract class DomainException extends RuntimeException{
     public DomainException(String message, Throwable cause) {

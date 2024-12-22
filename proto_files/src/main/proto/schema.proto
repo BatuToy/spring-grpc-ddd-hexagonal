@@ -23,10 +23,11 @@ message Author {
   repeated Book books = 7;
 }
 
+// Update this areas!
+
 enum Gender {
   MALE = 0;
   FEMALE = 1;
-  TRANSGENDER = 2;
 }
 
 message Address {
@@ -54,7 +55,13 @@ message CreateBookRequest {
 }
 
 message CreateAuthorRequest {
-  Author author = 1;
+   string firstName = 1;
+   string lastName = 2;
+   Gender gender = 3;
+   string salary = 4;
+   repeated Book books = 5;
+   Address address = 6;
+   Contact contact = 7;
 }
 
 message CreateAddressRequest {

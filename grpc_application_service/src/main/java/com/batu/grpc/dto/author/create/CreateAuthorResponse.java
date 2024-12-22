@@ -11,13 +11,13 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 public class CreateAuthorResponse {
-    @NotNull
+
+    private final UUID authorId;
+
     private final UUID authorTrackingId;
 
-    @NotNull
     private final UUID contactId;
 
-    @NotNull
     private final UUID addressId;
 
     private final String message;

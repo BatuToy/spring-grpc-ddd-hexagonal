@@ -1,6 +1,6 @@
 package com.batu.grpc.data.author.entity;
 
-import com.batu.common.domain.valueobject.Gender;
+import com.batu.domain.valueobject.Gender;
 import com.batu.grpc.data.book.entity.BookEntity;
 import jakarta.persistence.*;
 import lombok.*;

@@ -23,15 +23,15 @@ public class AuthorController {
     private final ApplicationService applicationService;
 
     @PostMapping(value = "/create")
-    public ResponseEntity<AppResponse<CreateAuthorResponse>> createAuthor(@RequestBody CreateAuthorCommand createAuthorCommand){
+    public AppResponse<CreateAuthorResponse> createAuthor(@RequestBody CreateAuthorCommand createAuthorCommand){
         log.info("Creating author!");
         CreateAuthorResponse createAuthorResponse = applicationService.createAuthor(createAuthorCommand);
         log.info("Author was created with author Tracking id= {}", createAuthorResponse.getAuthorTrackingId());
-        return ResponseEntity.ok(new AppResponse<>(
+        return new AppResponse<>(
                 createAuthorResponse,
-                HttpStatus.ACCEPTED,
-                createAuthorResponse.getMessage()
-        ));
+                HttpStatus.CREATED,
+                "Author created successfully with author id= " + createAuthorResponse.getAuthorId()
+        );
     }
 
     @GetMapping(value = "/{trackingId}")

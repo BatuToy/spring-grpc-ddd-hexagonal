@@ -1,4 +1,4 @@
-package com.batu.common.domain;
+package com.batu.domain;
 
 public class DomainConstants {
     private DomainConstants() {

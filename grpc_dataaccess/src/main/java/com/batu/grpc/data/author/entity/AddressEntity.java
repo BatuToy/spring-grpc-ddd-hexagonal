@@ -15,8 +15,13 @@ import java.util.UUID;
 public class AddressEntity {
     @Id
     private UUID id;
+    @Column(nullable = false)
+    private String country;
+    @Column(nullable = false)
     private String city;
+    @Column(nullable = false)
     private String street;
+    @Column(nullable = false)
     private Integer postalCode;
 
     @OneToOne(mappedBy = "address")

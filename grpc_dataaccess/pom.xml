@@ -21,7 +21,7 @@
         </dependency>
         <dependency>
             <groupId>com.batu</groupId>
-            <artifactId>grpc_service</artifactId>
+            <artifactId>grpc_application_service</artifactId>
         </dependency>
     </dependencies>
 </project>

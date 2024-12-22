@@ -1,6 +1,6 @@
 package com.batu.grpc.data.book.mapper;
 
-import com.batu.common.domain.valueobject.Money;
+import com.batu.domain.valueobject.Money;
 import com.batu.grpc.data.author.mapper.AuthorDataAccessMapper;
 import com.batu.grpc.data.book.entity.BookEntity;
 import com.batu.grpc.domain.entity.Author;
@@ -20,6 +20,7 @@ public class BookDataAccessMapper {
     // author -> books -> setAuthor -> set Author for each Book coming from the Author Domain object.
 
     private final AuthorDataAccessMapper authorDataAccessMapper;
+
     public BookEntity bookToBookEntity(Book book, Author author){
          return BookEntity.builder()
                 .id(book.getId().getValue())

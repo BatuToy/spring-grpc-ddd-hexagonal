@@ -1,4 +1,4 @@
-package com.batu.application.handler;
+package com.batu.application.exception;
 
 public class ApplicationException extends RuntimeException{
     public ApplicationException(String message) {

@@ -1,6 +1,6 @@
 package com.batu.grpc.domain.entity;
 
-import com.batu.common.domain.entity.BaseEntity;
+import com.batu.domain.entity.BaseEntity;
 import com.batu.grpc.domain.valueObject.AuthorId;
 import com.batu.grpc.domain.valueObject.ContactId;
 

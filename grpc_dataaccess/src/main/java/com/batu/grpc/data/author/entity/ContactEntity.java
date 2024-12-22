@@ -19,7 +19,6 @@ public class ContactEntity {
 
     @Id
     private UUID id;
-    private String country;
     private String phoneNumber;
     private String email;
 

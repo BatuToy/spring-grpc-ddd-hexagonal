@@ -1,6 +1,6 @@
 package com.batu.grpc.mapper.book;
 
-import com.batu.common.domain.valueobject.Money;
+import com.batu.domain.valueobject.Money;
 import com.batu.grpc.domain.entity.Book;
 import com.batu.grpc.domain.valueObject.AuthorId;
 import com.batu.grpc.dto.book.create.CreateBookCommand;
@@ -13,7 +13,6 @@ public class BookDataMapper {
 
     public Book createBookCommandToBook(CreateBookCommand createBookCommand){
         return Book.builder()
-                // BookId and SkuCode and BookStatus will be generating in the Domain class.
                 .authorId( new AuthorId(createBookCommand.getAuthorId()))
                 .bookStatus(createBookCommand.getBookStatus())
                 .pageSize(createBookCommand.getPageSize())
@@ -25,7 +24,7 @@ public class BookDataMapper {
     public CreateBookResponse bookToCreateBookResponse(Book book, String message){
         return CreateBookResponse.builder()
                 .bookId(book.getId().getValue())
-                .authorId(book.getId().getValue())
+                .authorId(book.getAuthorId().getValue())
                 .skuCode(book.getSkuCode().getValue())
                 .bookStatus(book.getBookStatus())
                 .message(message)

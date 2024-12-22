@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfiguration {
 
     @Bean
-    public AuthorDomainService domainService(){
+    public AuthorDomainService authorDomainService(){
         return new AuthorDomainServiceImpl();
     }
 

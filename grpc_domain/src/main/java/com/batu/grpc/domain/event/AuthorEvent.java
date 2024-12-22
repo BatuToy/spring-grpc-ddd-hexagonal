@@ -1,6 +1,6 @@
 package com.batu.grpc.domain.event;
 
-import com.batu.common.domain.event.DomainEvent;
+import com.batu.domain.event.DomainEvent;
 import com.batu.grpc.domain.entity.Author;
 
 import java.time.ZonedDateTime;

@@ -10,6 +10,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 public class Address {
+    private final String country;
     private final String city;
     private final String streetName;
     private final Integer postalCode;

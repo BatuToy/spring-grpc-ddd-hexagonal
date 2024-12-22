@@ -1,13 +1,12 @@
 package com.batu;
 
-import com.batu.common.domain.valueobject.BookStatus;
-import com.batu.common.domain.valueobject.Gender;
-import com.batu.common.domain.valueobject.Money;
+import com.batu.domain.valueobject.BookStatus;
+import com.batu.domain.valueobject.Gender;
+import com.batu.domain.valueobject.Money;
 import com.batu.grpc.domain.entity.Author;
 import com.batu.grpc.domain.valueObject.AuthorId;
 import com.batu.grpc.dto.author.create.*;
 import com.batu.grpc.dto.book.create.Book;
-import com.batu.grpc.dto.create.*;
 import com.batu.grpc.dto.author.track.TrackAuthorQuery;
 import com.batu.grpc.dto.author.track.TrackAuthorResponse;
 import com.batu.grpc.mapper.author.AuthorDataMapper;
@@ -110,9 +109,6 @@ class GrpcApplicationServiceTests {
         assertEquals("Author with id= "+ AUTHOR_ID +" created successfully!", response.getMessage());
     }
 
-    @Test
-    void createAuthorWithoutIds(){
-    }
     @Test
     void trackAuthorByTrackingId(){
         // Need to prepare the correct Author for tracking in beforeAll.

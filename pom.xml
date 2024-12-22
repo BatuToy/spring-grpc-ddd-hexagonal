@@ -14,12 +14,13 @@
     <modules>
         <module>proto_files</module>
         <module>grpc_container</module>
-        <module>grpc_service</module>
+        <module>grpc_application_service</module>
         <module>grpc_dataaccess</module>
         <module>grpc_domain</module>
         <module>common</module>
         <module>grpc_application</module>
         <module>infrastructure</module>
+        <module>grpc_server</module>
     </modules>
 
     <parent>
@@ -44,7 +45,7 @@
             </dependency>
             <dependency>
                 <groupId>com.batu</groupId>
-                <artifactId>grpc_service</artifactId>
+                <artifactId>grpc_application_service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -70,6 +71,11 @@
             <dependency>
                 <groupId>com.batu</groupId>
                 <artifactId>grpc_application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.batu</groupId>
+                <artifactId>common_application</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -4,6 +4,7 @@ import com.batu.grpc.domain.entity.Author;
 import com.batu.grpc.domain.exception.AuthorDomainException;
 import com.batu.grpc.dto.author.track.TrackAuthorQuery;
 import com.batu.grpc.dto.author.track.TrackAuthorResponse;
+import com.batu.grpc.exception.AuthorApplicationException;
 import com.batu.grpc.mapper.author.AuthorDataMapper;
 import com.batu.grpc.ports.output.repository.AuthorRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class TrackAuthorQueryHandler {
         Optional<Author> author = authorRepository.findAuthorByTrackingId(trackAuthorQuery.getTrackingId());
         if(author.isEmpty()){
             log.error("Couldn't find author with tracking id= {}", trackAuthorQuery.getTrackingId());
-            throw new AuthorDomainException("Author not found with tracking id= " + author.get().getTrackingId().getValue());
+            throw new AuthorApplicationException("Author not found with tracking id= " + trackAuthorQuery.getTrackingId());
         }
         return authorDataMapper.authorToTrackAuthorResponse(author.get(),
                 "Author with tracking id= "+ author.get().getTrackingId().getValue() +

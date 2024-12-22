@@ -1,4 +1,4 @@
-package com.batu.common.domain.valueobject;
+package com.batu.domain.valueobject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

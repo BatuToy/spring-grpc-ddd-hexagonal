@@ -1,7 +1,7 @@
 package com.batu.grpc.dto.book.create;
 
-import com.batu.common.domain.valueobject.BookStatus;
-import com.batu.common.domain.valueobject.Money;
+import com.batu.domain.valueobject.BookStatus;
+import com.batu.domain.valueobject.Money;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

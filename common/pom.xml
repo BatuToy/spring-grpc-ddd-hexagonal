@@ -15,6 +15,7 @@
 
     <modules>
         <module>common_domain</module>
+        <module>common_application</module>
     </modules>
 
 </project>

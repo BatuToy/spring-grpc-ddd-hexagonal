@@ -1,4 +1,4 @@
-package com.batu.common.domain.entity;
+package com.batu.domain.entity;
 
 import java.util.Objects;
 

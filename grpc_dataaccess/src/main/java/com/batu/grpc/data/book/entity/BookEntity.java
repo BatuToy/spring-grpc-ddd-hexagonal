@@ -1,6 +1,6 @@
 package com.batu.grpc.data.book.entity;
 
-import com.batu.common.domain.valueobject.BookStatus;
+import com.batu.domain.valueobject.BookStatus;
 import com.batu.grpc.data.author.entity.AuthorEntity;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
@@ -38,7 +38,6 @@ public class BookEntity {
 
     @ManyToOne
     @JoinColumn(name = "author_id")
-    @Nullable
     private AuthorEntity author;
 
 }

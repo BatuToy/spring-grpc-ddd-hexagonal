@@ -1,4 +1,4 @@
-package com.batu.common.domain.valueobject;
+package com.batu.domain.valueobject;
 
 public abstract class BaseId<T> {
     private T value;

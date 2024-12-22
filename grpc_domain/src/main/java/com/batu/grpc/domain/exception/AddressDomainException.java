@@ -1,6 +1,6 @@
 package com.batu.grpc.domain.exception;
 
-import com.batu.common.domain.exception.DomainException;
+import com.batu.domain.exception.DomainException;
 
 public class AddressDomainException extends DomainException {
     public AddressDomainException(String message) {
