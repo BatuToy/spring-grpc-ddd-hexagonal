@@ -1,6 +1,8 @@
 spring:
   application:
     name: grpc-server-application
+  main:
+    allow-bean-definition-overriding: true
   jpa:
     show-sql: true
     hibernate:
@@ -13,10 +15,22 @@ spring:
     url: jdbc:postgresql://localhost:5432/grpc_db
     username: postgres
     password: postgres
-
 server:
   port: 8081
   servlet:
     context-path: "/api/v1"
+
+grpc:
+  server:
+    port: 9000
+
+logging:
+  level:
+    io.grpc: DEBUG
+
+
+
+
+
 
 

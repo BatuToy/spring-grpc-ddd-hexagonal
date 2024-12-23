@@ -1,4 +1,4 @@
-package com.batu.author.rest.author;
+package com.batu.application.rest.author;
 
 import com.batu.response.AppResponse;
 import com.batu.grpc.dto.author.create.CreateAuthorCommand;

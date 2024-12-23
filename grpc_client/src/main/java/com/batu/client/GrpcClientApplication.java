@@ -1,11 +1,12 @@
-package com.batu.grpc;
+package com.batu.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringBootApplication(scanBasePackages = "com.batu.grpc.client")
+//@SpringBootApplication(scanBasePackages = "com.batu.client")
+//@EntityScan(basePackages = "com.batu.grpc.data")
+//@EnableJpaRepositories(basePackages = "com.batu.grpc")
+@SpringBootApplication
 public class GrpcClientApplication {
 
     public static void main(String[] args) {

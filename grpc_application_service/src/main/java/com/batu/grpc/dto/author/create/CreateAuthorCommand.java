@@ -23,7 +23,9 @@ public class CreateAuthorCommand {
     private final Gender gender;
     @NotNull
     private final BigDecimal salary;
+
     private final List<Book> books;
+
     @NotNull
     private final Address address;
     @NotNull

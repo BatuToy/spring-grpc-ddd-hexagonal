@@ -7,6 +7,48 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>grpc_client</artifactId>
-    <name>Archetype - grpc_client</name>
-    <url>http://maven.apache.org</url>
+    <name>grpc_client</name>
+    <url>https://maven.apache.org</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.batu</groupId>
+            <artifactId>proto_files</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-stub</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>google-protobuf</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-netty</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>net.devh</groupId>
+            <artifactId>grpc-client-spring-boot-starter</artifactId>
+            <version>2.9.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.batu</groupId>
+            <artifactId>common_application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.batu</groupId>
+            <artifactId>grpc_application_service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
 </project>

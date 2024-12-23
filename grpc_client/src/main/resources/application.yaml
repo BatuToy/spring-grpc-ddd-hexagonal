@@ -1,0 +1,23 @@
+server:
+  servlet:
+    context-path: "/api/v1"
+  port: 9090
+  http2:
+    enabled: true
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+grpc:
+  client:
+    grpc-client-channel:
+      address: static://localhost:9000
+      negotiation-type: plaintext
+
+logging:
+  level:
+    io.grpc: DEBUG
+
+grpc-stub:
+  host-name: localhost
+  port: 9000

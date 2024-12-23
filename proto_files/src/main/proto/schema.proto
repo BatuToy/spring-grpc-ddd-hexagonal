@@ -8,9 +8,10 @@ message Book {
   string id = 1;
   string title = 2;
   string price = 3;
-  int32 pages = 4;
+  int32 page_size = 4;
   string sku_code = 5;
   string author_id = 6;
+  BookStatus book_status = 7;
 }
 
 message Author {
@@ -21,6 +22,8 @@ message Author {
   string address_id = 5;
   string contact_id = 6;
   repeated Book books = 7;
+  string salary = 8;
+  bool isActive = 9;
 }
 
 // Update this areas!
@@ -28,6 +31,12 @@ message Author {
 enum Gender {
   MALE = 0;
   FEMALE = 1;
+}
+
+enum BookStatus {
+  IN_STOCK = 0;
+  NOT_IN_STOCK = 1;
+  INITIALIZATION = 3;
 }
 
 message Address {
@@ -46,15 +55,7 @@ message Contact {
   string author_id =4;
 }
 
-message CreateContactRequest {
-  Contact contact =1;
-}
-
-message CreateBookRequest {
-  Book book = 1;
-}
-
-message CreateAuthorRequest {
+message CreateAuthorCommand {
    string firstName = 1;
    string lastName = 2;
    Gender gender = 3;
@@ -64,63 +65,58 @@ message CreateAuthorRequest {
    Contact contact = 7;
 }
 
-message CreateAddressRequest {
-  Address address =1;
-}
-
-message GetBookBySkuCodeRequest {
-  string sku_code = 1;
-}
-
-message GetAuthorByIdRequest {
+message CreateAuthorResponse {
   string author_id = 1;
+  string tracking_id = 2;
+  string address_id = 3;
+  string contact_id = 4;
+  string message = 5;
+}
+message CreateBookCommand {
+  string author_id = 1;
+  string title = 2;
+  string price = 3;
+  int32 page_size = 4;
+  BookStatus book_status = 5;
 }
 
 message CreateBookResponse {
-  int32 statusCode = 1;
-  string message = 2;
+  string author_id = 1;
+  string tracking_id = 2;
+  string address_id = 3;
+  string contact_id = 4;
+  string message = 5;
 }
 
-message CreateAuthorResponse {
-  int32 statusCode = 1;
-  string message = 2;
+
+message TrackBookQuery {
+  string sku_code = 1;
+}
+message TrackAuthorQuery {
+  string tracking_id = 1;
 }
 
-message GetAuthorByIdResponse {
-  int32 statusCode = 1;
-  string message = 2;
+message TrackBookResponse {
+  string book_id = 1;
+  string author_id = 2;
+  string sku_code = 3;
+  BookStatus book_status = 4;
+  string message = 5;
+}
+message TrackAuthorResponse{
+  string author_id = 1;
+  string address_id = 2;
+  string contact_id = 3;
+  string message = 4;
 }
 
-message GetBookBySkuCodeResponse {
-  int32 statusCode = 1;
-  string message = 2;
-}
+service ApplicationServiceGrpcServer {
+  rpc createBook(CreateBookCommand) returns (CreateBookResponse){}
 
-message CreateContactResponse {
-  int32 statusCode = 1;
-  string message = 2;
-}
+  rpc trackBook(TrackBookQuery) returns (TrackBookResponse){}
 
-message CreateAddressResponse {
-  int32 statusCode = 1;
-  string message = 2;
-}
+  rpc createAuthor(CreateAuthorCommand) returns (CreateAuthorResponse){}
 
-service BookService {
-
-  rpc createBook(CreateBookRequest) returns (CreateBookResponse){}
-
-  rpc getBookBySkuCode(GetBookBySkuCodeRequest) returns (GetBookBySkuCodeResponse){}
-}
-
-service AuthorService {
-
-  rpc createAuthor(CreateAuthorRequest) returns (CreateAuthorResponse){}
-
-  rpc createContact(CreateContactRequest) returns (CreateContactResponse){}
-
-  rpc getAuthor(GetAuthorByIdRequest) returns(GetAuthorByIdResponse){}
-
-  rpc createAddress(CreateAddressRequest) returns (CreateAddressResponse){}
+  rpc trackAuthor(TrackAuthorQuery) returns(TrackAuthorResponse){}
 
 }

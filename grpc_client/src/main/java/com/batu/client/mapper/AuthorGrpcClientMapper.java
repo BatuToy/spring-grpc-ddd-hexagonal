@@ -1,7 +1,6 @@
-package com.batu.grpc.mapper;
+package com.batu.client.mapper;
 
 import com.batu.domain.valueobject.BookStatus;
-import com.batu.grpc.*;
 import com.batu.grpc.Address;
 import com.batu.grpc.Contact;
 import com.batu.grpc.CreateAuthorCommand;

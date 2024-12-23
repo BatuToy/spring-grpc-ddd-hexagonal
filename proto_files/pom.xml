@@ -17,7 +17,6 @@
 
 
     <properties>
-        <grpc.version>1.57.0</grpc.version>
         <protobuf.version>3.24.4</protobuf.version>
         <protobuf.maven.plugin.version>0.6.1</protobuf.maven.plugin.version>
         <os-detected-classifier>osx-aarch_64</os-detected-classifier>
@@ -28,27 +27,19 @@
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-protobuf</artifactId>
-            <version>${grpc.version}</version>
+            <version>1.57.0</version>
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-stub</artifactId>
-            <version>${grpc.version}</version>
+            <version>1.57.0</version>
         </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-netty</artifactId>
-            <version>${grpc.version}</version>
-        </dependency>
-
-        <!-- Protobuf Java Runtime-->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>${protobuf.version}</version>
         </dependency>
 
-        <!-- Annotations for gRPC-->
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
@@ -74,7 +65,6 @@
                     <pluginId>grpc-java</pluginId>
                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os-detected-classifier}</pluginArtifact>
                     <protoSourceRoot>src/main/proto</protoSourceRoot>
-                    <!-- Default directory is ./src/main/proto -->
                 </configuration>
                 <executions>
                     <execution>

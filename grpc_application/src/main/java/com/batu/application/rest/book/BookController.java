@@ -1,4 +1,4 @@
-package com.batu.author.rest.book;
+package com.batu.application.rest.book;
 
 import com.batu.response.AppResponse;
 import com.batu.grpc.dto.book.create.CreateBookCommand;

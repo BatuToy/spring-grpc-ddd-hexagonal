@@ -1,7 +1,6 @@
-package com.batu.author.response;
+package com.batu.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 

@@ -1,11 +1,11 @@
 package com.batu.grpc.exception;
 
-public class GrpAuthorException extends RuntimeException{
-    public GrpAuthorException(String message) {
+public class GrpcAuthorException extends RuntimeException{
+    public GrpcAuthorException(String message) {
         super(message);
     }
 
-    public GrpAuthorException(String message, Throwable cause) {
+    public GrpcAuthorException(String message, Throwable cause) {
         super(message, cause);
     }
 }

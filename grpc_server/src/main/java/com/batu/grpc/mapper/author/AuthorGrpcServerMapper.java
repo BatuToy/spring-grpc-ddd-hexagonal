@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
-public class AuthorGrpcMapper {
+public class AuthorGrpcServerMapper {
 
     public com.batu.grpc.dto.author.create.CreateAuthorCommand grpcCommandToCreateAuthorCommand(CreateAuthorCommand createAuthorCommand){
         return com.batu.grpc.dto.author.create.CreateAuthorCommand.builder()
