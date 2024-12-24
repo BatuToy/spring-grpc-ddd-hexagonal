@@ -34,7 +34,7 @@ public class BookDataMapper {
     public TrackBookResponse bookToTrackBookResponse(Book book, String message){
         return TrackBookResponse.builder()
                 .bookId(book.getId().getValue())
-                .AuthorId(book.getAuthorId().getValue())
+                .authorId(book.getAuthorId().getValue())
                 .skuCode(book.getSkuCode().getValue())
                 .bookStatus(book.getBookStatus())
                 .message(message)

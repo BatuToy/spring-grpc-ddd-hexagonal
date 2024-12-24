@@ -19,5 +19,9 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.batu</groupId>
+            <artifactId>kafka_config_data</artifactId>
+        </dependency>
     </dependencies>
 </project>

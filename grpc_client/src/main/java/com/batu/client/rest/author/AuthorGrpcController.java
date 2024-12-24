@@ -1,7 +1,7 @@
 package com.batu.client.rest.author;
 
 
-import com.batu.client.mapper.AuthorGrpcClientMapper;
+import com.batu.client.mapper.author.AuthorGrpcClientMapper;
 import com.batu.client.service.GrpcClientService;
 import com.batu.grpc.dto.author.create.CreateAuthorCommand;
 import com.batu.grpc.dto.author.create.CreateAuthorResponse;
@@ -21,8 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/author")
 public class AuthorGrpcController {
+
     private final GrpcClientService grpcClientService;
-    private final AuthorGrpcClientMapper authorGrpcClientMapper;
 
     @PostMapping(value = "/create")
     public AppResponse<com.batu.grpc.dto.author.create.CreateAuthorResponse> createAuthor(@RequestBody CreateAuthorCommand createAuthorCommand){

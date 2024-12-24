@@ -23,7 +23,7 @@ public class ClientBeanConfiguration {
        ManagedChannel channel = ManagedChannelBuilder
                .forAddress(grpcConfigData.getHostName(), grpcConfigData.getPort())
                .usePlaintext()
-               .idleTimeout(30, TimeUnit.SECONDS)
+               .idleTimeout(60, TimeUnit.SECONDS)
                .build();
         return ApplicationServiceGrpcServerGrpc.newBlockingStub(channel);
    }

@@ -6,6 +6,7 @@
     <modules>
         <module>kafka_producer</module>
         <module>kafka_consumer</module>
+        <module>kafka_config_data</module>
     </modules>
 
     <parent>

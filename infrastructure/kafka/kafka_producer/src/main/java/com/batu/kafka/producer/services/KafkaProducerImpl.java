@@ -9,11 +9,12 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 
+import java.io.Serializable;
 import java.util.concurrent.CompletableFuture;
 
 @Slf4j
 @RequiredArgsConstructor
-public class KafkaProducerImpl<K extends java.lang.String, V> implements KafkaProducer<K, V>{
+public class KafkaProducerImpl<K extends Serializable, V> implements KafkaProducer<K, V>{
 
     private final KafkaTemplate<K, V> kafkaTemplate;
 

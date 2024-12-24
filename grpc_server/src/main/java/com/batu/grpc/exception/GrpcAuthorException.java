@@ -1,6 +1,8 @@
 package com.batu.grpc.exception;
 
-public class GrpcAuthorException extends RuntimeException{
+import org.apache.catalina.users.GenericRole;
+
+public class GrpcAuthorException extends GrpcServerException {
     public GrpcAuthorException(String message) {
         super(message);
     }

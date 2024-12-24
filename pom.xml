@@ -96,6 +96,21 @@
                 <artifactId>grpc_server</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.batu</groupId>
+                <artifactId>kafka_config_data</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.batu</groupId>
+                <artifactId>kafka_producer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.batu</groupId>
+                <artifactId>kafka_consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

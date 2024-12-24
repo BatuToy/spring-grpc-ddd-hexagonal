@@ -1,7 +1,6 @@
 package com.batu.grpc.server;
 
 import com.batu.grpc.*;
-import com.batu.grpc.ApplicationServiceGrpcServerGrpc.ApplicationServiceGrpcServerImplBase;
 import com.batu.grpc.CreateAuthorCommand;
 import com.batu.grpc.CreateAuthorResponse;
 import com.batu.grpc.CreateBookCommand;
@@ -10,8 +9,11 @@ import com.batu.grpc.TrackAuthorQuery;
 import com.batu.grpc.TrackAuthorResponse;
 import com.batu.grpc.TrackBookQuery;
 import com.batu.grpc.TrackBookResponse;
+import com.batu.grpc.dto.book.track.TrackBookStockQuery;
 import com.batu.grpc.exception.GrpcAuthorException;
+import com.batu.grpc.exception.GrpcBookException;
 import com.batu.grpc.mapper.author.AuthorGrpcServerMapper;
+import com.batu.grpc.mapper.book.BookGrpcServerMapper;
 import com.batu.grpc.ports.input.service.ApplicationService;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
@@ -25,41 +27,58 @@ import net.devh.boot.grpc.server.service.GrpcService;
 public class ApplicationServiceGrpcServer extends ApplicationServiceGrpcServerGrpc.ApplicationServiceGrpcServerImplBase {
 
     private final ApplicationService applicationService;
-    private final AuthorGrpcServerMapper authorGrpcMapper;
+    private final AuthorGrpcServerMapper authorGrpcServerMapper;
+    private final BookGrpcServerMapper bookGrpcServerMapper;
 
     @Override
     public void createAuthor(CreateAuthorCommand request, StreamObserver<CreateAuthorResponse> responseObserver) {
         try {
-            com.batu.grpc.dto.author.create.CreateAuthorCommand createAuthorCommand = authorGrpcMapper.grpcCommandToCreateAuthorCommand(request);
+            com.batu.grpc.dto.author.create.CreateAuthorCommand createAuthorCommand = authorGrpcServerMapper.grpcCommandToCreateAuthorCommand(request);
             com.batu.grpc.dto.author.create.CreateAuthorResponse createAuthorResponse = applicationService.createAuthor(createAuthorCommand);
-            CreateAuthorResponse grpcResponse = authorGrpcMapper.createAuthorResponseToGrpcCreateAuthorResponse(createAuthorResponse);
+            CreateAuthorResponse grpcResponse = authorGrpcServerMapper.createAuthorResponseToGrpcCreateAuthorResponse(createAuthorResponse);
             responseObserver.onNext(grpcResponse);
             responseObserver.onCompleted();
         } catch (GrpcAuthorException exception){
-            responseObserver.onError(new GrpcAuthorException("Error occur in the server!",Status.INTERNAL.withDescription("Error occur!").asRuntimeException()));
+            responseObserver.onError(new GrpcAuthorException("Error occur while creating the author in the server!",Status.INTERNAL.withDescription("Error occur!").asRuntimeException()));
         }
     }
 
     @Override
     public void trackAuthor(TrackAuthorQuery request, StreamObserver<TrackAuthorResponse> responseObserver) {
         try {
-            com.batu.grpc.dto.author.track.TrackAuthorQuery trackAuthorQuery =authorGrpcMapper.grpcTrackAuthorQueryToTrackAuthorQuery(request);
+            com.batu.grpc.dto.author.track.TrackAuthorQuery trackAuthorQuery = authorGrpcServerMapper.grpcTrackAuthorQueryToTrackAuthorQuery(request);
             com.batu.grpc.dto.author.track.TrackAuthorResponse trackAuthorResponse = applicationService.trackAuthor(trackAuthorQuery);
-            TrackAuthorResponse grpcResponse = authorGrpcMapper.trackAuthorResponseToGrpcTrackAuthorResponse(trackAuthorResponse);
+            TrackAuthorResponse grpcResponse = authorGrpcServerMapper.trackAuthorResponseToGrpcTrackAuthorResponse(trackAuthorResponse);
             responseObserver.onNext(grpcResponse);
             responseObserver.onCompleted();
         } catch (GrpcAuthorException e){
-            responseObserver.onError(new GrpcAuthorException("Error occur in the server!",Status.INTERNAL.withDescription("Error occur!").asRuntimeException()));
+            responseObserver.onError(new GrpcAuthorException("Error occur while tracking the author in the server!",Status.INTERNAL.withDescription("Error occur!").asRuntimeException()));
         }
     }
 
     @Override
     public void createBook(CreateBookCommand request, StreamObserver<CreateBookResponse> responseObserver) {
-        // map the request object to other request object.
+        try {
+            com.batu.grpc.dto.book.create.CreateBookCommand createBookCommand = bookGrpcServerMapper.grpcCreateBookCommandToCreateBookCommand(request);
+            com.batu.grpc.dto.book.create.CreateBookResponse createBookResponse = applicationService.createBook(createBookCommand);
+            CreateBookResponse grpcResponse = bookGrpcServerMapper.createBookResponseToGrpcCreateBookResponse(createBookResponse);
+            responseObserver.onNext(grpcResponse);
+            responseObserver.onCompleted();
+        } catch (GrpcBookException e) {
+            responseObserver.onError(new GrpcBookException("Error occur while creating the book in the server!", Status.CANCELLED.withDescription("Error occur in the server!").asRuntimeException()));
+        }
     }
 
     @Override
     public void trackBook(TrackBookQuery request, StreamObserver<TrackBookResponse> responseObserver) {
-        // map the request object to other request object.
+        try {
+            TrackBookStockQuery trackBookStockQuery = bookGrpcServerMapper.grpcTrackBookQueryToTrackBookStockQuery(request);
+            com.batu.grpc.dto.book.track.TrackBookResponse trackBookResponse = applicationService.trackBook(trackBookStockQuery);
+            TrackBookResponse grpcResponse = bookGrpcServerMapper.trackBookResponseToGrpcTrackBookResponse(trackBookResponse);
+            responseObserver.onNext(grpcResponse);
+            responseObserver.onCompleted();
+        } catch (GrpcBookException e){
+            responseObserver.onError(new GrpcBookException("Error occur while tracking the book in the server!", Status.INTERNAL.withDescription("Error occur in the server!").asRuntimeException()));
+        }
     }
 }

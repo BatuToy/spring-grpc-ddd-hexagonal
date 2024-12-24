@@ -29,10 +29,6 @@
         </dependency>
         <dependency>
             <groupId>com.batu</groupId>
-            <artifactId>proto_files</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.batu</groupId>
             <artifactId>common_domain</artifactId>
         </dependency>
         <dependency>
@@ -46,10 +42,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
 

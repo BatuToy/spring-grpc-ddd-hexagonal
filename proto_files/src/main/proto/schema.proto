@@ -81,10 +81,10 @@ message CreateBookCommand {
 }
 
 message CreateBookResponse {
-  string author_id = 1;
-  string tracking_id = 2;
-  string address_id = 3;
-  string contact_id = 4;
+  string book_id = 1;
+  string author_id = 2;
+  string sku_code = 3;
+  BookStatus book_status = 4;
   string message = 5;
 }
 

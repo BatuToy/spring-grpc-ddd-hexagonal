@@ -12,7 +12,7 @@ import java.util.UUID;
 @Getter
 public class TrackBookResponse {
     private final UUID bookId;
-    private final UUID AuthorId;
+    private final UUID authorId;
     private final UUID skuCode;
     private final BookStatus bookStatus;
     private final String message;
