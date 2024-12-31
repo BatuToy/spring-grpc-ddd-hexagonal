@@ -20,9 +20,13 @@ public class AuthorEntity {
 
     @Id
     private UUID id;
+
     private UUID trackingId;
+
     private String firstName;
+
     private String lastName;
+
     private BigDecimal salary;
 
     @Enumerated(EnumType.STRING)

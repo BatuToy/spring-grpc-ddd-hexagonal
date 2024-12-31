@@ -1,9 +1,8 @@
 package com.batu.grpc.mapper.book;
 
 import com.batu.domain.valueobject.BookStatus;
-import com.batu.grpc.Book;
-import com.batu.grpc.TrackBookQuery;
-import com.batu.grpc.TrackBookResponse;
+import com.batu.TrackBookQuery;
+import com.batu.TrackBookResponse;
 import com.batu.grpc.dto.book.create.CreateBookCommand;
 import com.batu.grpc.dto.book.create.CreateBookResponse;
 import com.batu.grpc.dto.book.track.SkuCode;
@@ -16,7 +15,7 @@ import java.util.UUID;
 @Component
 public class BookGrpcServerMapper {
 
-    public CreateBookCommand grpcCreateBookCommandToCreateBookCommand(com.batu.grpc.CreateBookCommand createBookCommand) {
+    public CreateBookCommand grpcCreateBookCommandToCreateBookCommand(com.batu.CreateBookCommand createBookCommand) {
         return CreateBookCommand.builder()
                 .authorId(UUID.fromString(createBookCommand.getAuthorId()))
                 .title(createBookCommand.getTitle())
@@ -26,8 +25,8 @@ public class BookGrpcServerMapper {
                 .build();
     }
 
-    public com.batu.grpc.CreateBookResponse createBookResponseToGrpcCreateBookResponse(CreateBookResponse createBookResponse) {
-        return com.batu.grpc.CreateBookResponse.newBuilder()
+    public com.batu.CreateBookResponse createBookResponseToGrpcCreateBookResponse(CreateBookResponse createBookResponse) {
+        return com.batu.CreateBookResponse.newBuilder()
                 .setBookId(createBookResponse.getBookId().toString())
                 .setAuthorId(createBookResponse.getAuthorId().toString())
                 .setSkuCode(createBookResponse.getSkuCode().toString())
@@ -52,11 +51,11 @@ public class BookGrpcServerMapper {
                 .build();
     }
 
-    private com.batu.grpc.BookStatus bookStatusToGrpcBookStatus(BookStatus bookStatus) {
-        return com.batu.grpc.BookStatus.valueOf(bookStatus.name());
+    private com.batu.BookStatus bookStatusToGrpcBookStatus(BookStatus bookStatus) {
+        return com.batu.BookStatus.valueOf(bookStatus.name());
     }
 
-    private BookStatus grpcBookStatusToBookStatus(com.batu.grpc.BookStatus bookStatus) {
+    private BookStatus grpcBookStatusToBookStatus(com.batu.BookStatus bookStatus) {
         return BookStatus.valueOf(bookStatus.name());
     }
 

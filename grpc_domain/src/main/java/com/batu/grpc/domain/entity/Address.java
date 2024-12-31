@@ -29,7 +29,6 @@ public class Address extends BaseEntity<AddressId> {
         this.postalCode = postalCode;
     }
 
-    // Initialize the AuthorId
     public void initializeWithoutAddressIdToAuthor(AuthorId authorId){
         super.setId(new AddressId(UUID.randomUUID()));
         this.authorId = authorId;

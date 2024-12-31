@@ -1,6 +1,4 @@
-package com.batu.grpc.domain.valueObject;
-
-import com.batu.domain.valueobject.BaseId;
+package com.batu.domain.valueobject;
 
 import java.util.UUID;
 

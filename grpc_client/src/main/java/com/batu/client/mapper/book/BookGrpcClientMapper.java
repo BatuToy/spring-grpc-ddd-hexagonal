@@ -1,8 +1,8 @@
 package com.batu.client.mapper.book;
 
-import com.batu.grpc.BookStatus;
-import com.batu.grpc.CreateBookCommand;
-import com.batu.grpc.TrackBookQuery;
+import com.batu.BookStatus;
+import com.batu.CreateBookCommand;
+import com.batu.TrackBookQuery;
 import com.batu.grpc.dto.book.create.CreateBookResponse;
 import com.batu.grpc.dto.book.track.TrackBookResponse;
 import com.batu.grpc.dto.book.track.TrackBookStockQuery;
@@ -23,7 +23,7 @@ public class BookGrpcClientMapper {
                 .build();
     }
 
-    public CreateBookResponse grpcCreateBookResponseToCreateBookResponse(com.batu.grpc.CreateBookResponse createBookResponse){
+    public CreateBookResponse grpcCreateBookResponseToCreateBookResponse(com.batu.CreateBookResponse createBookResponse){
         return CreateBookResponse.builder()
                 .bookId(UUID.fromString(createBookResponse.getBookId()))
                 .authorId(UUID.fromString(createBookResponse.getAuthorId()))
@@ -40,7 +40,7 @@ public class BookGrpcClientMapper {
     }
 
 
-    public TrackBookResponse grpcTrackBookResponseToTrackBookResponse(com.batu.grpc.TrackBookResponse trackBookResponse) {
+    public TrackBookResponse grpcTrackBookResponseToTrackBookResponse(com.batu.TrackBookResponse trackBookResponse) {
         return TrackBookResponse.builder()
                 .bookId(UUID.fromString(trackBookResponse.getBookId()))
                 .authorId(UUID.fromString(trackBookResponse.getAuthorId()))

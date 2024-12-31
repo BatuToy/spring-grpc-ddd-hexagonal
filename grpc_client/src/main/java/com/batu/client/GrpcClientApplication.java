@@ -2,11 +2,10 @@ package com.batu.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-//@SpringBootApplication(scanBasePackages = "com.batu.client")
-//@EntityScan(basePackages = "com.batu.grpc.data")
-//@EnableJpaRepositories(basePackages = "com.batu.grpc")
 @SpringBootApplication
+@EnableDiscoveryClient
 public class GrpcClientApplication {
 
     public static void main(String[] args) {

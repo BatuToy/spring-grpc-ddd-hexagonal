@@ -1,10 +1,10 @@
 package com.batu.grpc.mapper.author;
 
 import com.batu.domain.valueobject.Money;
-import com.batu.grpc.BookStatus;
-import com.batu.grpc.CreateAuthorCommand;
-import com.batu.grpc.CreateAuthorResponse;
-import com.batu.grpc.Gender;
+import com.batu.BookStatus;
+import com.batu.CreateAuthorCommand;
+import com.batu.CreateAuthorResponse;
+import com.batu.Gender;
 import com.batu.grpc.dto.author.create.Address;
 import com.batu.grpc.dto.author.create.Contact;
 import com.batu.grpc.dto.author.track.TrackAuthorQuery;
@@ -41,14 +41,14 @@ public class AuthorGrpcServerMapper {
                 .build();
     }
 
-   public TrackAuthorQuery grpcTrackAuthorQueryToTrackAuthorQuery(com.batu.grpc.TrackAuthorQuery trackAuthorQuery){
+   public TrackAuthorQuery grpcTrackAuthorQueryToTrackAuthorQuery(com.batu.TrackAuthorQuery trackAuthorQuery){
         return TrackAuthorQuery.builder()
                 .trackingId(UUID.fromString(trackAuthorQuery.getTrackingId()))
                 .build();
    }
 
-   public com.batu.grpc.TrackAuthorResponse trackAuthorResponseToGrpcTrackAuthorResponse(TrackAuthorResponse trackAuthorResponse){
-        return com.batu.grpc.TrackAuthorResponse.newBuilder()
+   public com.batu.TrackAuthorResponse trackAuthorResponseToGrpcTrackAuthorResponse(TrackAuthorResponse trackAuthorResponse){
+        return com.batu.TrackAuthorResponse.newBuilder()
                 .setAuthorId(trackAuthorResponse.getAuthorId().toString())
                 .setAddressId(trackAuthorResponse.getAddressId().toString())
                 .setContactId(trackAuthorResponse.getContactId().toString())
@@ -56,7 +56,7 @@ public class AuthorGrpcServerMapper {
                 .build();
    }
 
-    private List<Book> grpcBooksToBooks(List<com.batu.grpc.Book> books){
+    private List<Book> grpcBooksToBooks(List<com.batu.Book> books){
         return books.stream().map(
                 book -> Book.builder()
                         .title(book.getTitle())
@@ -67,7 +67,7 @@ public class AuthorGrpcServerMapper {
         ).toList();
     }
 
-    private Address grpcAddressToAddress(com.batu.grpc.Address address){
+    private Address grpcAddressToAddress(com.batu.Address address){
        return Address.builder()
                .country(address.getCountry())
                .city(address.getCity())
@@ -76,7 +76,7 @@ public class AuthorGrpcServerMapper {
                .build();
     }
 
-    private Contact grpcContactToContact(com.batu.grpc.Contact contact){
+    private Contact grpcContactToContact(com.batu.Contact contact){
         return Contact.builder()
                 .email(contact.getEmail())
                 .phoneNumber(contact.getPhoneNumber())

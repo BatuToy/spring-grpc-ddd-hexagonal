@@ -22,12 +22,13 @@
         <module>infrastructure</module>
         <module>grpc_server</module>
         <module>grpc_client</module>
+        <module>eureka_server</module>
     </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.0</version>
+        <version>3.2.7</version>
         <relativePath/>
     </parent>
 
@@ -67,28 +68,27 @@
             </dependency>
             <dependency>
                 <groupId>com.batu</groupId>
-                <artifactId>grpc_container</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.batu</groupId>
                 <artifactId>grpc_application</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.batu</groupId>
-                <artifactId>common_application</artifactId>
+                <artifactId>inventory_domain_core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
+                <groupId>com.batu</groupId>
+                <artifactId>inventory_application_service</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.batu</groupId>
-                <artifactId>grpc_client</artifactId>
+                <artifactId>inventory_application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.batu</groupId>
+                <artifactId>common_application</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -110,6 +110,20 @@
                 <groupId>com.batu</groupId>
                 <artifactId>kafka_consumer</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- For general cloud purposes -> compatible with spring 3.x-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2023.0.0</version>
+                <scope>import</scope>
+                <type>pom</type>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -1,6 +1,8 @@
 package com.batu.grpc.data.author.mapper;
 
+import com.batu.domain.valueobject.BookId;
 import com.batu.domain.valueobject.Money;
+import com.batu.domain.valueobject.SkuCode;
 import com.batu.grpc.data.author.entity.AddressEntity;
 import com.batu.grpc.data.author.entity.AuthorEntity;
 import com.batu.grpc.data.author.entity.ContactEntity;

@@ -7,6 +7,17 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>kafka_consumer</artifactId>
-    <name>Archetype - kafka_consumer</name>
+    <name>kafka_consumer</name>
     <url>https://maven.apache.org</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.batu</groupId>
+            <artifactId>kafka_config_data</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,8 +1,14 @@
 syntax = "proto3";
 
+/**
+  If you leave this option= All the compiled and generated sources will extract in that package!
+  option java_package = "com.batu.proto";
+ */
+
 option java_multiple_files = true;
 
-package com.batu.grpc;
+
+package com.batu;
 
 message Book {
   string id = 1;

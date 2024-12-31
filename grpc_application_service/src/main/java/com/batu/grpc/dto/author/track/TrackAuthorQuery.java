@@ -1,16 +1,15 @@
 package com.batu.grpc.dto.author.track;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.util.UUID;
 
 @Getter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class TrackAuthorQuery {
     @NotNull
-    private final UUID trackingId;
+    private  UUID trackingId;
 }

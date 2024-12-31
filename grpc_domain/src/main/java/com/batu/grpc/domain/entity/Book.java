@@ -3,10 +3,10 @@ package com.batu.grpc.domain.entity;
 import com.batu.domain.entity.AggregateRoot;
 import com.batu.domain.valueobject.BookStatus;
 import com.batu.grpc.domain.valueObject.AuthorId;
-import com.batu.grpc.domain.valueObject.BookId;
+import com.batu.domain.valueobject.BookId;
 import com.batu.domain.valueobject.Money;
 import com.batu.grpc.domain.exception.BookDomainException;
-import com.batu.grpc.domain.valueObject.SkuCode;
+import com.batu.domain.valueobject.SkuCode;
 
 import java.util.List;
 import java.util.UUID;

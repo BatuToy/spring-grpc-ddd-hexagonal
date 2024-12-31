@@ -7,7 +7,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>kafka_producer</artifactId>
-    <name>Archetype - kafka_producer</name>
+    <name>kafka_producer</name>
     <url>https://maven.apache.org</url>
 
     <dependencies>

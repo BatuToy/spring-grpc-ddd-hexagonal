@@ -15,6 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Configuration
 public class KafkaProducerConfig<K extends Serializable, V> {
+    // V is in default extends from an object.
 
     private final KafkaConfigData kafkaConfigData;
 
@@ -25,8 +26,8 @@ public class KafkaProducerConfig<K extends Serializable, V> {
 
     private Map<String, Object> producerConfig(){
         Map<String, Object> props = new HashMap<>();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaConfigData.getBootstrapServerAddress());
-        props.put(ProducerConfig.ACKS_CONFIG, "1");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaConfigData.getBootstrapServer());
+        props.put(ProducerConfig.ACKS_CONFIG, kafkaConfigData.getAcks());
         // props will come here
         return props;
     }

@@ -1,10 +1,10 @@
 package com.batu.client.mapper.author;
 
 import com.batu.domain.valueobject.BookStatus;
-import com.batu.grpc.Address;
-import com.batu.grpc.Contact;
-import com.batu.grpc.CreateAuthorCommand;
-import com.batu.grpc.Gender;
+import com.batu.Address;
+import com.batu.Contact;
+import com.batu.CreateAuthorCommand;
+import com.batu.Gender;
 import com.batu.grpc.dto.author.create.CreateAuthorResponse;
 import com.batu.grpc.dto.author.track.TrackAuthorQuery;
 import com.batu.grpc.dto.book.create.Book;
@@ -28,13 +28,13 @@ public class AuthorGrpcClientMapper {
                 .build();
     }
 
-    public com.batu.grpc.TrackAuthorQuery trackAuthorQueryToGrpcTrackAuthorQuery(TrackAuthorQuery trackAuthorQuery){
-        return com.batu.grpc.TrackAuthorQuery.newBuilder()
+    public com.batu.TrackAuthorQuery trackAuthorQueryToGrpcTrackAuthorQuery(TrackAuthorQuery trackAuthorQuery){
+        return com.batu.TrackAuthorQuery.newBuilder()
                 .setTrackingId(trackAuthorQuery.getTrackingId().toString())
                 .build();
     }
 
-    public com.batu.grpc.dto.author.track.TrackAuthorResponse grpcTrackAuthorResponseToTrackAuthorResponse(com.batu.grpc.TrackAuthorResponse trackAuthorResponse){
+    public com.batu.grpc.dto.author.track.TrackAuthorResponse grpcTrackAuthorResponseToTrackAuthorResponse(com.batu.TrackAuthorResponse trackAuthorResponse){
         return com.batu.grpc.dto.author.track.TrackAuthorResponse.builder()
                 .authorId(UUID.fromString(trackAuthorResponse.getAuthorId()))
                 .contactId(UUID.fromString(trackAuthorResponse.getContactId()))
@@ -43,9 +43,9 @@ public class AuthorGrpcClientMapper {
                 .build();
     }
 
-    private List<com.batu.grpc.Book> booksToGrpcBooks(List<Book> books) {
+    private List<com.batu.Book> booksToGrpcBooks(List<Book> books) {
         return books.stream().map(
-                book -> com.batu.grpc.Book.newBuilder()
+                book -> com.batu.Book.newBuilder()
                         .setBookStatus(bookStatusToGrpcBookStatus(book.getBookStatus()))
                         .setPageSize(book.getPageSize())
                         .setPrice(book.getPrice().getAmount().toString())
@@ -74,11 +74,11 @@ public class AuthorGrpcClientMapper {
         return Gender.valueOf(gender.name());
     }
     // Change this book status object to dto create object from the Application service.
-    private com.batu.grpc.BookStatus bookStatusToGrpcBookStatus(BookStatus bookStatus){
-        return com.batu.grpc.BookStatus.valueOf(bookStatus.name());
+    private com.batu.BookStatus bookStatusToGrpcBookStatus(BookStatus bookStatus){
+        return com.batu.BookStatus.valueOf(bookStatus.name());
     }
 
-    public CreateAuthorResponse grpcCreateAuthorResponseToCreateAuthorResponse(com.batu.grpc.CreateAuthorResponse createAuthorResponse){
+    public CreateAuthorResponse grpcCreateAuthorResponseToCreateAuthorResponse(com.batu.CreateAuthorResponse createAuthorResponse){
         return CreateAuthorResponse.builder()
                 .authorId(UUID.fromString(createAuthorResponse.getAuthorId()))
                 .authorTrackingId(UUID.fromString(createAuthorResponse.getTrackingId()))

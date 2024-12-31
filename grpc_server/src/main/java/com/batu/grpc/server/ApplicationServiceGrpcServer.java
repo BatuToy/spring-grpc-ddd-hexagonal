@@ -1,14 +1,14 @@
 package com.batu.grpc.server;
 
-import com.batu.grpc.*;
-import com.batu.grpc.CreateAuthorCommand;
-import com.batu.grpc.CreateAuthorResponse;
-import com.batu.grpc.CreateBookCommand;
-import com.batu.grpc.CreateBookResponse;
-import com.batu.grpc.TrackAuthorQuery;
-import com.batu.grpc.TrackAuthorResponse;
-import com.batu.grpc.TrackBookQuery;
-import com.batu.grpc.TrackBookResponse;
+import com.batu.*;
+import com.batu.CreateAuthorCommand;
+import com.batu.CreateAuthorResponse;
+import com.batu.CreateBookCommand;
+import com.batu.CreateBookResponse;
+import com.batu.TrackAuthorQuery;
+import com.batu.TrackAuthorResponse;
+import com.batu.TrackBookQuery;
+import com.batu.TrackBookResponse;
 import com.batu.grpc.dto.book.track.TrackBookStockQuery;
 import com.batu.grpc.exception.GrpcAuthorException;
 import com.batu.grpc.exception.GrpcBookException;

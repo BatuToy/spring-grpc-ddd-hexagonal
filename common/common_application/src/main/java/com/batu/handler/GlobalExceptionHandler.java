@@ -30,10 +30,10 @@ public class GlobalExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler(value = {ValidationException.class})
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.BAD_REQUEST) //Validation exception -> 'Bad Request'
     public ErrorDto handleException(ValidationException validationException){
         if(validationException instanceof ConstraintViolationException){
-            final String violations = extractViolations((ConstraintViolationException) validationException);
+            final String violations =  extractViolations((ConstraintViolationException) validationException);
             log.error(violations, validationException);
             return ErrorDto.builder()
                     .code(HttpStatus.BAD_REQUEST.getReasonPhrase())

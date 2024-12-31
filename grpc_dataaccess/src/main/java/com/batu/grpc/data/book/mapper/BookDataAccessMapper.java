@@ -6,8 +6,8 @@ import com.batu.grpc.data.book.entity.BookEntity;
 import com.batu.grpc.domain.entity.Author;
 import com.batu.grpc.domain.entity.Book;
 import com.batu.grpc.domain.valueObject.AuthorId;
-import com.batu.grpc.domain.valueObject.BookId;
-import com.batu.grpc.domain.valueObject.SkuCode;
+import com.batu.domain.valueobject.BookId;
+import com.batu.domain.valueobject.SkuCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

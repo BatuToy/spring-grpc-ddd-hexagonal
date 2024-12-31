@@ -1,8 +1,8 @@
 package com.batu.client.rest.author;
 
 
-import com.batu.client.mapper.author.AuthorGrpcClientMapper;
-import com.batu.client.service.GrpcClientService;
+import com.batu.client.GrpcClientService;
+import com.batu.client.GrpcClientServiceImpl;
 import com.batu.grpc.dto.author.create.CreateAuthorCommand;
 import com.batu.grpc.dto.author.create.CreateAuthorResponse;
 import com.batu.grpc.dto.author.track.TrackAuthorQuery;
@@ -36,7 +36,7 @@ public class AuthorGrpcController {
         );
     }
 
-    @PostMapping
+    @PostMapping(value = "/track")
     public AppResponse<TrackAuthorResponse> trackAuthor(@RequestBody TrackAuthorQuery trackAuthorQuery){
         log.info("(Rest) \t Author starting to track with tracking id= {}", trackAuthorQuery.getTrackingId());
         TrackAuthorResponse trackAuthorResponse = grpcClientService.trackAuthor(trackAuthorQuery);

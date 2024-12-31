@@ -1,11 +1,13 @@
 package com.batu.application.exception;
 
-public class ApplicationException extends RuntimeException{
-    public ApplicationException(String message) {
+public abstract class ApplicationException extends RuntimeException{
+    protected ApplicationException(String message) {
         super(message);
     }
 
-    public ApplicationException(String message, Throwable cause) {
+    protected ApplicationException(String message, Throwable cause) {
         super(message, cause);
     }
+
+
 }

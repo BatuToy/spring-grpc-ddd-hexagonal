@@ -8,7 +8,8 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "kafka-config")
 @Data
 public class KafkaConfigData {
-    // more prop can come here!
-    private String bootstrapServerAddress;
-    private String batchSize;
+    private String bootstrapServer;
+    private String keyDeserializerClass;
+    private String valueDeserializerClass;
+    private String acks;
 }
